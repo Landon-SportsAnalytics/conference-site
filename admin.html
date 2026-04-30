@@ -251,7 +251,7 @@ function logout() {
 }
 
 /* ── INIT ── */
-function initDashboard() {
+async function initDashboard() {
   const gasUrl = localStorage.getItem(GAS_URL_KEY) || "";
   if (gasUrl) {
     document.getElementById("gasUrlInput").value = gasUrl;
@@ -261,8 +261,8 @@ function initDashboard() {
     banner.querySelector("p, strong + *") // update description
     banner.innerHTML = `<div class="gas-icon">✅</div><div style="flex:1;"><strong>Google Sheets connected</strong>New registrations from index.html are automatically written to your Sheet.<div class="gas-url-form"><input type="url" id="gasUrlInput" value="${gasUrl}" placeholder="https://script.google.com/macros/s/.../exec" /><button onclick="saveGasUrl()">Update</button></div></div>`;
   }
-  renderStats();
-  renderBreakouts();
+  await renderStats();
+  await renderBreakouts();
 }
 
 /* ── GAS URL ── */
@@ -279,11 +279,23 @@ function loadRegistrations() {
   catch { return {}; }
 }
 
-function refreshData() { renderStats(); renderBreakouts(); }
+async function loadRegistrationsFromGAS() {
+  const gasUrl = localStorage.getItem(GAS_URL_KEY);
+  if (!gasUrl) return null;
+  try {
+    const res = await fetch(`${gasUrl}?action=getAll`);
+    const json = await res.json();
+    return json.status === "ok" ? json.registrations : null;
+  } catch {
+    return null;
+  }
+}
+
+async function refreshData() { await renderStats(); await renderBreakouts(); }
 
 /* ── STATS ── */
-function renderStats() {
-  const regs = loadRegistrations();
+async function renderStats() {
+  const regs = (await loadRegistrationsFromGAS()) || loadRegistrations();
   let totalRegs = 0, uniqueEmails = new Set(), withSignups = 0;
   BREAKOUT_SESSIONS.forEach(s => {
     const arr = regs[s.id] || [];
@@ -301,8 +313,8 @@ function renderStats() {
 }
 
 /* ── BREAKOUTS ── */
-function renderBreakouts() {
-  const regs  = loadRegistrations();
+async function renderBreakouts() {
+  const regs  = (await loadRegistrationsFromGAS()) || loadRegistrations();
   const query = document.getElementById("searchInput").value.toLowerCase();
   const cat   = document.getElementById("catFilter").value;
   const list  = document.getElementById("sessionsList");

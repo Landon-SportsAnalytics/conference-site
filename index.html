@@ -508,6 +508,7 @@ function registerForSession(sessionId, name, email) {
       method: "POST",
       body: JSON.stringify({
         sessionId: s.id, sessionTitle: s.title, category: s.category,
+        speaker: s.speaker.name, org: s.speaker.org,
         name, email: email.toLowerCase()
       })
     }).catch(() => {});
