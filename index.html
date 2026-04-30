@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduCon 2026 — Shaping the Future of Learning</title>
+  <title>AI with Purpose 2026 — Westminster Christian School</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:    #1a56db;
-      --blue-dk: #1140a6;
-      --teal:    #0694a2;
-      --gold:    #e3a008;
+      --blue:    #2c5234;
+      --blue-dk: #1e3a24;
+      --teal:    #3a6b44;
+      --gold:    #B9975B;
       --bg:      #f8fafc;
       --surface: #ffffff;
       --border:  #e2e8f0;
@@ -20,7 +20,7 @@
       --radius:  10px;
     }
 
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    body { font-family: 'Zapf Humanist 601', 'Zapf Humanist', Optima, 'Optima Nova', 'URW Classico', Candara, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
     /* ── NAV ── */
     nav {
@@ -46,8 +46,8 @@
       text-transform: uppercase; margin-bottom: 1.2rem;
     }
     .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: .75rem; }
-    .hero h1 span { color: #fde68a; }
-    .hero p { font-size: 1.15rem; opacity: .9; max-width: 560px; margin: 0 auto 2rem; }
+    .hero h1 span { color: #ffffff; }
+    .hero p { font-size: 1.15rem; color: #aac9aa; max-width: 560px; margin: 0 auto 2rem; }
     .hero-meta { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.4rem; }
     .hero-meta .chip {
       background: rgba(255,255,255,.18); border-radius: 8px;
@@ -115,12 +115,11 @@
       font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
       padding: .15rem .55rem; border-radius: 12px;
     }
-    .track-Technology   { background: #dbeafe; color: #1d4ed8; }
-    .track-Leadership   { background: #ede9fe; color: #6d28d9; }
-    .track-Curriculum   { background: #fef3c7; color: #92400e; }
-    .track-Wellbeing    { background: #d1fae5; color: #065f46; }
-    .track-Innovation   { background: #fce7f3; color: #9d174d; }
-    .track-Keynote      { background: #e0f2fe; color: #0c4a6e; }
+    .track-Keynote        { background: #e8f0ea; color: #1e3a24; }
+    .track-ClassroomAI   { background: #dbeafe; color: #1d4ed8; }
+    .track-EthicsFaith   { background: #fef3c7; color: #78450a; }
+    .track-StudentLearning { background: #fce7f3; color: #9d174d; }
+    .track-Leadership    { background: #ede9fe; color: #6d28d9; }
 
     .session-time { font-size: .78rem; color: var(--muted); }
     .session-card h3 { font-size: .98rem; font-weight: 700; line-height: 1.3; }
@@ -138,12 +137,83 @@
     .register-btn.registered { background: #10b981; cursor: default; }
     .register-btn:disabled { background: #94a3b8; cursor: not-allowed; }
 
+    /* ── BREAKOUT SESSIONS ── */
+    #breakouts { background: #f1f5f1; }
+
+    .lad-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 2.5rem;
+    }
+    .lad-cell {
+      padding: 1.4rem 1.6rem; background: var(--surface); position: relative;
+    }
+    .lad-cell:not(:last-child) { border-right: 1.5px solid var(--border); }
+    .lad-label {
+      font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+    .lad-learn  .lad-label { color: #1d4ed8; }
+    .lad-apply  .lad-label { color: #059669; }
+    .lad-discern .lad-label { color: #7c3aed; }
+    .lad-cell h3 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+    .lad-cell p  { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+    .lad-arrow {
+      position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+      background: var(--border); color: var(--muted); border-radius: 50%;
+      width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; z-index: 1;
+    }
+    @media (max-width: 640px) {
+      .lad-strip { grid-template-columns: 1fr; }
+      .lad-cell:not(:last-child) { border-right: none; border-bottom: 1.5px solid var(--border); }
+      .lad-arrow { display: none; }
+    }
+
+    .cat-pill {
+      font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em;
+      padding: .2rem .65rem; border-radius: 12px; display: inline-block;
+    }
+    .cat-Learn   { background: #dbeafe; color: #1d4ed8; }
+    .cat-Apply   { background: #d1fae5; color: #065f46; }
+    .cat-Discern { background: #ede9fe; color: #6d28d9; }
+
+    .breakout-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 1.4rem; }
+
+    .breakout-card {
+      background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius);
+      padding: 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .65rem;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .breakout-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.1); border-color: var(--blue); }
+    .breakout-card.registered { border-color: #10b981; background: #f0fdf4; }
+    .breakout-card h3 { font-size: 1rem; font-weight: 700; line-height: 1.35; }
+    .breakout-card .desc { font-size: .84rem; color: var(--muted); line-height: 1.55; flex: 1; }
+
+    .breakout-speaker {
+      display: flex; align-items: center; gap: .75rem; padding-top: .5rem;
+      border-top: 1px solid var(--border); text-decoration: none; color: inherit;
+    }
+    .breakout-speaker:hover .bs-name { text-decoration: underline; color: var(--blue); }
+    .bs-avatar {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; font-weight: 700; color: #fff;
+    }
+    .bs-name  { font-size: .85rem; font-weight: 700; }
+    .bs-role  { font-size: .76rem; color: var(--muted); }
+    .bs-linkedin { font-size: .74rem; color: var(--blue); margin-top: .1rem; }
+
+    .breakout-filter { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+
     /* ── SPEAKERS ── */
     .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
     .speaker-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 1.4rem 1rem; text-align: center;
+      transition: box-shadow .2s, border-color .2s; cursor: pointer;
     }
+    .speaker-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.1); border-color: var(--blue); }
     .speaker-avatar {
       width: 64px; height: 64px; border-radius: 50%; margin: 0 auto .75rem;
       display: flex; align-items: center; justify-content: center;
@@ -221,24 +291,25 @@
 
 <!-- NAV -->
 <nav>
-  <span class="brand">EduCon 2026</span>
+  <span class="brand">AI with Purpose 2026</span>
   <ul>
     <li><a href="#about">About</a></li>
-    <li><a href="#sessions">Sessions</a></li>
-    <li><a href="#speakers">Speakers</a></li>
+
+    <li><a href="#breakouts">Breakouts</a></li>
+    <li><a href="#speakers">Speaker</a></li>
     <li><a href="#venue">Venue</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="badge">Annual Educational Conference</div>
-  <h1>EduCon 2026:<br/><span>Shaping the Future of Learning</span></h1>
-  <p>Three days of inspiring talks, hands-on workshops, and collaborative sessions for educators, administrators, and innovators.</p>
+  <div class="badge">Westminster Christian School — WCS Educator Conference</div>
+  <h1>Artificial Intelligence<br/><span>with Purpose</span></h1>
+  <p>Equipping Educators for Today's Classroom, Raising Ambassadors for Christ for Tomorrow's World</p>
   <div class="hero-meta">
-    <div class="chip">📅 June 15–17, 2026</div>
-    <div class="chip">📍 Riverside Convention Center</div>
-    <div class="chip">👥 1,200+ Attendees</div>
+    <div class="chip">August 5, 2026</div>
+    <div class="chip">Westminster Christian School — HS Campus</div>
+    <div class="chip">PK–12 Educators &amp; Leaders</div>
   </div>
   <a href="#sessions" class="btn-primary">Browse Sessions</a>
 </header>
@@ -246,10 +317,9 @@
 <!-- STATS -->
 <div class="stats-band">
   <div class="stats-inner">
-    <div class="stat"><strong>42</strong><span>Sessions</span></div>
-    <div class="stat"><strong>28</strong><span>Expert Speakers</span></div>
-    <div class="stat"><strong>6</strong><span>Tracks</span></div>
-    <div class="stat"><strong>3</strong><span>Days</span></div>
+    <div class="stat"><strong>1</strong><span>Breakout Session</span></div>
+    <div class="stat"><strong>2</strong><span>Featured Speakers</span></div>
+    <div class="stat"><strong>1</strong><span>Transformative Day</span></div>
   </div>
 </div>
 
@@ -257,56 +327,76 @@
 <section class="section" id="about">
   <div>
     <div class="section-title">About the Conference</div>
-    <p class="section-sub">EduCon 2026 brings together educators and thought leaders to explore what's next in education.</p>
+    <p class="section-sub">Artificial Intelligence with Purpose is a forward-thinking conference designed to equip Christian educators to pursue excellence in education while remaining firmly grounded in their God-given calling as image-bearers and creators.</p>
   </div>
   <div class="about-grid">
     <div class="about-card">
-      <div class="icon">🎯</div>
-      <h3>Focused Tracks</h3>
-      <p>Six curated tracks — Technology, Leadership, Curriculum, Wellbeing, Innovation, and Keynotes — so you can build a schedule that fits your goals.</p>
+
+      <h3>Faith-Centered Foundation</h3>
+      <p>As those created by God to create, educators are uniquely positioned to steward emerging technologies like AI with wisdom, discernment, and faith — without compromising truth or our Christ-centered mission.</p>
     </div>
     <div class="about-card">
-      <div class="icon">🤝</div>
-      <h3>Networking</h3>
-      <p>Connect with 1,200+ educators across K–12 and higher education through structured networking lunches, receptions, and roundtables.</p>
+
+      <h3>Purposeful AI Integration</h3>
+      <p>Explore how artificial intelligence can be used responsibly and creatively to elevate teaching and learning across PK–12 classrooms. Leave with tools you can use Monday morning.</p>
     </div>
     <div class="about-card">
-      <div class="icon">💡</div>
+
       <h3>Hands-On Workshops</h3>
-      <p>Leave with actionable strategies from interactive workshops led by practitioners who have implemented real solutions in their classrooms.</p>
+      <p>Interactive sessions led by practitioners who have implemented AI thoughtfully in Christian school settings — practical strategies grounded in pedagogy and mission.</p>
     </div>
     <div class="about-card">
-      <div class="icon">🏆</div>
-      <h3>Innovation Showcase</h3>
-      <p>Explore the latest edtech tools, curriculum materials, and research in our two-day exhibit hall featuring 60+ organizations.</p>
+
+      <h3>Forming Ambassadors</h3>
+      <p>We will focus on purposeful innovation that forms students as thoughtful learners, ethical leaders, and ambassadors for Christ prepared to engage tomorrow's world with confidence, compassion, and excellence.</p>
     </div>
   </div>
 </section>
 
-<!-- SESSIONS -->
-<section id="sessions" style="padding: 4rem 0; background: var(--bg);">
-  <div class="section" style="padding-top: 0; padding-bottom: 0;">
-    <div class="section-title">Sessions</div>
-    <p class="section-sub">Click a session to register. Each registration requires your name and email — one registration per person per session.</p>
 
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-track="All">All Tracks</button>
-      <button class="filter-btn" data-track="Keynote">Keynote</button>
-      <button class="filter-btn" data-track="Technology">Technology</button>
-      <button class="filter-btn" data-track="Leadership">Leadership</button>
-      <button class="filter-btn" data-track="Curriculum">Curriculum</button>
-      <button class="filter-btn" data-track="Wellbeing">Wellbeing</button>
-      <button class="filter-btn" data-track="Innovation">Innovation</button>
+<!-- BREAKOUT SESSIONS -->
+<section id="breakouts" style="padding: 4rem 0; background: #f1f5f1;">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-title">Breakout Sessions</div>
+    <p class="section-sub">Our breakout sessions are intentionally designed to build confidence, deepen application, and center wisdom — guiding educators through a purposeful learning journey rather than isolated workshops.</p>
+
+    <!-- Learn / Apply / Discern strip -->
+    <div class="lad-strip">
+      <div class="lad-cell lad-learn">
+        <div class="lad-label">Learn</div>
+        <h3>Foundations &amp; Confidence</h3>
+        <p>Build confidence with foundational AI concepts and strategies that every educator can apply immediately.</p>
+        <div class="lad-arrow">›</div>
+      </div>
+      <div class="lad-cell lad-apply">
+        <div class="lad-label">Apply</div>
+        <h3>Application in Context</h3>
+        <p>Apply AI tools purposefully within your classroom, curriculum, and school community in meaningful ways.</p>
+        <div class="lad-arrow">›</div>
+      </div>
+      <div class="lad-cell lad-discern">
+        <div class="lad-label">Discern</div>
+        <h3>Other Ideas / Extensions</h3>
+        <p>Deep dive into specialized, advanced, or extension topics for those ready to explore further.</p>
+      </div>
     </div>
 
-    <div id="sessionsList"></div>
+    <!-- Category filter -->
+    <div class="breakout-filter" id="breakoutFilter">
+      <button class="filter-btn active" data-cat="All">All</button>
+      <button class="filter-btn" data-cat="Learn">Learn</button>
+      <button class="filter-btn" data-cat="Apply">Apply</button>
+      <button class="filter-btn" data-cat="Discern">Discern</button>
+    </div>
+
+    <div class="breakout-grid" id="breakoutGrid"></div>
   </div>
 </section>
 
 <!-- SPEAKERS -->
 <section class="section" id="speakers">
   <div class="section-title">Featured Speakers</div>
-  <p class="section-sub">World-class educators and innovators sharing their expertise.</p>
+  <p class="section-sub">Christian educators, theologians, and AI practitioners leading our sessions.</p>
   <div class="speakers-grid" id="speakersGrid"></div>
 </section>
 
@@ -315,13 +405,15 @@
   <div class="section-title">Venue</div>
   <p class="section-sub">Everything you need to know about getting there and getting around.</p>
   <div class="venue-block">
-    <div class="venue-map">🏛️</div>
+    <div class="venue-map" style="background:#1e3a24;">
+      <img src="https://csfla.org/assets/images/schools/logos/westminster-christian-logo.png" alt="Westminster Christian School" style="max-width:180px; max-height:130px; object-fit:contain;" />
+    </div>
     <div class="venue-info">
-      <h3>Riverside Convention Center</h3>
-      <p>📍 400 Riverside Drive, Springfield, IL 62701</p>
-      <p>🚗 Free parking in Lot C and D</p>
-      <p>🚌 Metro Blue Line — Convention Center stop</p>
-      <p>✈️ 20 min from Springfield Regional Airport</p>
+      <h3>Westminster Christian School — HS Campus</h3>
+      <p>6855 SW 152nd Street, Palmetto Bay, FL 33157</p>
+      <p>Free parking available on campus</p>
+      <p>August 5, 2026 — 8:00 AM to 4:30 PM</p>
+      <p>Breakfast and lunch provided for all registered attendees</p>
       <p style="margin-top: 1rem; font-size: .85rem; color: var(--muted);">Room assignments are included in your confirmation email after you register for individual sessions.</p>
     </div>
   </div>
@@ -329,8 +421,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <strong>EduCon 2026</strong> — Shaping the Future of Learning<br/>
-  <span>Questions? Contact <a href="mailto:info@educon2026.org" style="color:#93c5fd;">info@educon2026.org</a></span><br/>
+  <strong>Artificial Intelligence with Purpose</strong> — Westminster Christian School 2026<br/>
+  <span>Questions? Contact <a href="mailto:conference@wcsmiami.org" style="color:#93c5fd;">conference@wcsmiami.org</a></span><br/>
   <span style="opacity:.4;font-size:.75rem;margin-top:.5rem;display:inline-block;"><a href="admin.html" style="color:inherit;">Admin</a></span>
 </footer>
 
@@ -362,45 +454,21 @@
 
 <script>
 /* ── DATA ── */
-const SESSIONS = [
-  // Day 1
-  { id: 1,  day: "Day 1 — Monday, June 15", time: "9:00 AM – 10:15 AM", track: "Keynote",    title: "Opening Keynote: The Learning Revolution",                    speaker: "Dr. Maya Chen",       desc: "A vision for the next decade of education, exploring how emerging technologies and research will transform how we teach and learn.", capacity: 800, room: "Main Hall" },
-  { id: 2,  day: "Day 1 — Monday, June 15", time: "11:00 AM – 12:00 PM", track: "Technology", title: "AI in the Classroom: Tools That Actually Work",               speaker: "Prof. James Okafor",  desc: "A practical tour of AI-assisted grading, differentiation, and feedback tools with live demos and honest assessments of what's ready today.", capacity: 120, room: "Room 101" },
-  { id: 3,  day: "Day 1 — Monday, June 15", time: "11:00 AM – 12:00 PM", track: "Curriculum",  title: "Project-Based Learning at Scale",                             speaker: "Sarah Lindqvist",     desc: "How one district redesigned three grade levels around PBL without sacrificing standards alignment or assessment rigor.", capacity: 80, room: "Room 205" },
-  { id: 4,  day: "Day 1 — Monday, June 15", time: "11:00 AM – 12:00 PM", track: "Wellbeing",   title: "Building Trauma-Informed Schools",                            speaker: "Dr. Alicia Torres",   desc: "Frameworks and daily practices that create psychologically safe environments for students who have experienced adversity.", capacity: 90, room: "Room 310" },
-  { id: 5,  day: "Day 1 — Monday, June 15", time: "2:00 PM – 3:00 PM",  track: "Leadership",  title: "Instructional Coaching That Moves the Needle",                speaker: "Marcus Webb",         desc: "Research-backed coaching cycles and conversation protocols that lead to measurable improvements in classroom practice.", capacity: 100, room: "Room 102" },
-  { id: 6,  day: "Day 1 — Monday, June 15", time: "2:00 PM – 3:00 PM",  track: "Innovation",  title: "Maker Spaces on Any Budget",                                  speaker: "Lisa Park",           desc: "Transform a closet, a corner, or an entire room into a creativity hub — with practical sourcing and curriculum integration tips.", capacity: 60, room: "Room 212" },
-  { id: 7,  day: "Day 1 — Monday, June 15", time: "3:15 PM – 4:15 PM",  track: "Technology",  title: "Data Literacy: Teaching Students to Question Numbers",         speaker: "Prof. James Okafor",  desc: "Classroom-tested activities for developing statistical thinking and healthy skepticism toward data-driven claims.", capacity: 120, room: "Room 101" },
-  { id: 8,  day: "Day 1 — Monday, June 15", time: "3:15 PM – 4:15 PM",  track: "Curriculum",  title: "Formative Assessment Without the Paper Stack",                speaker: "Dr. Robin Hayes",     desc: "Low-overhead techniques to gather actionable evidence of learning every day using digital and analog methods.", capacity: 110, room: "Room 205" },
-  // Day 2
-  { id: 9,  day: "Day 2 — Tuesday, June 16", time: "9:00 AM – 10:00 AM", track: "Keynote",    title: "Keynote: Equity as Infrastructure",                           speaker: "Dr. Kofi Mensah",     desc: "Why equity cannot be an initiative bolted onto systems built for exclusion — and what genuine structural change looks like.", capacity: 800, room: "Main Hall" },
-  { id: 10, day: "Day 2 — Tuesday, June 16", time: "10:30 AM – 11:30 AM", track: "Leadership", title: "Navigating Policy While Staying Student-Centered",            speaker: "Superintendent Priya Nair", desc: "How district leaders can implement mandates without losing sight of what matters for kids — real stories and hard-earned lessons.", capacity: 90, room: "Room 102" },
-  { id: 11, day: "Day 2 — Tuesday, June 16", time: "10:30 AM – 11:30 AM", track: "Technology", title: "Cybersecurity and Digital Citizenship in K–12",               speaker: "Anna Kowalski",       desc: "Age-appropriate frameworks for teaching students to protect themselves and behave responsibly in digital spaces.", capacity: 100, room: "Room 101" },
-  { id: 12, day: "Day 2 — Tuesday, June 16", time: "10:30 AM – 11:30 AM", track: "Wellbeing",  title: "Staff Burnout: Diagnosis and Recovery",                       speaker: "Dr. Alicia Torres",   desc: "Understanding the organizational roots of educator burnout and systemic approaches that go beyond self-care advice.", capacity: 130, room: "Room 310" },
-  { id: 13, day: "Day 2 — Tuesday, June 16", time: "1:30 PM – 3:00 PM",  track: "Curriculum",  title: "Workshop: Backward Design in 90 Minutes",                    speaker: "Dr. Robin Hayes",     desc: "A hands-on unit planning session using Understanding by Design. Bring a topic — leave with a draft unit framework.", capacity: 40, room: "Workshop A" },
-  { id: 14, day: "Day 2 — Tuesday, June 16", time: "1:30 PM – 3:00 PM",  track: "Innovation",  title: "Workshop: Rapid Prototyping for Educators",                  speaker: "Lisa Park",           desc: "Apply design thinking to a classroom challenge in real time. No engineering background required — just curiosity.", capacity: 40, room: "Workshop B" },
-  { id: 15, day: "Day 2 — Tuesday, June 16", time: "3:15 PM – 4:15 PM",  track: "Leadership",  title: "Hiring for Culture and Competence",                          speaker: "Marcus Webb",         desc: "Structured interview processes and rubrics that help you identify educators who will thrive — and contribute — in your community.", capacity: 70, room: "Room 102" },
-  { id: 16, day: "Day 2 — Tuesday, June 16", time: "3:15 PM – 4:15 PM",  track: "Technology",  title: "Immersive Learning: AR/VR Without the Hype",                 speaker: "Anna Kowalski",       desc: "Where augmented and virtual reality add genuine value versus where they are a distraction — with case studies from early adopters.", capacity: 80, room: "Room 101" },
-  // Day 3
-  { id: 17, day: "Day 3 — Wednesday, June 17", time: "9:00 AM – 10:00 AM", track: "Keynote",  title: "Closing Keynote: Courage in the Classroom",                   speaker: "Dr. Maya Chen",       desc: "A call to action for educators to embrace uncertainty, advocate for their students, and lead with purpose in challenging times.", capacity: 800, room: "Main Hall" },
-  { id: 18, day: "Day 3 — Wednesday, June 17", time: "10:30 AM – 11:30 AM", track: "Curriculum","title": "Multilingual Learners: Beyond Compliance",                   speaker: "Sarah Lindqvist",     desc: "Instructional strategies that genuinely accelerate language acquisition while building on students' existing linguistic assets.", capacity: 95, room: "Room 205" },
-  { id: 19, day: "Day 3 — Wednesday, June 17", time: "10:30 AM – 11:30 AM", track: "Wellbeing", title: "Social-Emotional Learning That Isn't Cringe",                speaker: "Dr. Kofi Mensah",     desc: "Why most SEL programs fail and what authentic, identity-affirming approaches look like in practice.", capacity: 110, room: "Room 310" },
-  { id: 20, day: "Day 3 — Wednesday, June 17", time: "1:00 PM – 2:00 PM",  track: "Innovation","title": "Student Voice in School Design",                            speaker: "Superintendent Priya Nair", desc: "Case studies of schools that have genuinely integrated student co-design into curriculum, schedules, and facility decisions.", capacity: 75, room: "Room 212" },
-  { id: 21, day: "Day 3 — Wednesday, June 17", time: "1:00 PM – 2:00 PM",  track: "Technology","title": "The Accessible Classroom: Technology for Every Learner",    speaker: "Prof. James Okafor",  desc: "Tools and techniques that ensure students with disabilities have full access to digital learning environments.", capacity: 90, room: "Room 101" },
-  { id: 22, day: "Day 3 — Wednesday, June 17", time: "2:15 PM – 3:15 PM",  track: "Leadership","title": "Leading Change Without Burning Bridges",                    speaker: "Marcus Webb",         desc: "Change management frameworks adapted for school contexts — building buy-in, handling resistance, and sustaining momentum.", capacity: 80, room: "Room 102" },
-];
 
 const SPEAKERS = [
-  { name: "Dr. Maya Chen",         role: "Founder, FutureLearn Institute",   color: "#1a56db", init: "MC" },
-  { name: "Prof. James Okafor",    role: "MIT Education Lab",                 color: "#0694a2", init: "JO" },
-  { name: "Dr. Kofi Mensah",       role: "Equity in Education Coalition",     color: "#7c3aed", init: "KM" },
-  { name: "Sarah Lindqvist",       role: "National PBL Network",              color: "#d97706", init: "SL" },
-  { name: "Dr. Alicia Torres",     role: "Trauma-Informed Schools Initiative",color: "#059669", init: "AT" },
-  { name: "Marcus Webb",           role: "Principal Leadership Academy",      color: "#db2777", init: "MW" },
-  { name: "Dr. Robin Hayes",       role: "Assessment for Learning Project",   color: "#2563eb", init: "RH" },
-  { name: "Lisa Park",             role: "MakerEd.org",                       color: "#ea580c", init: "LP" },
-  { name: "Anna Kowalski",         role: "Center for Digital Citizenship",    color: "#0891b2", init: "AK" },
-  { name: "Superintendent Priya Nair", role: "Springfield Unified School District", color: "#4f46e5", init: "PN" },
+  { name: "Jordanna Court",    role: "Education Leadership Professional | Developer of Young Minds", org: "Pine Crest School",                  color: "#B9975B", init: "JC", linkedin: "https://www.linkedin.com/in/jordannacourt/" },
+  { name: "Mrs. Lisa Garrido", role: "Biology Teacher",                                              org: "Westminster Christian School",        color: "#2c5234", init: "LG", linkedin: "https://www.linkedin.com/in/lisa-garrido-bb5b1036/" },
+];
+
+/* ── BREAKOUT DATA ── */
+const BREAKOUT_SESSIONS = [
+  {
+    id: 101,
+    category: "Learn",
+    title: "Cultivating Critical AI Literacy in the Classroom",
+    desc: "This hands-on session will equip educators with practical strategies for teaching students how to become analytical users of generative AI across various subject areas. Attendees will explore essential AI Literacy skills, including prompt engineering and critical analysis, to help students move from passive consumption to active collaboration. Key concepts covered include algorithmic bias analysis, data synthesis, and the ethical use of AI. Participants will leave with lesson ideas designed to empower students to leverage AI as a sophisticated research and thinking partner, developing crucial critical thinking and discernment skills for the new era of education.",
+    speaker: { name: "Jordanna Court", role: "Education Leadership Professional | Developer of Young Minds", org: "Pine Crest School", init: "JC", color: "#B9975B", linkedin: "https://www.linkedin.com/in/jordannacourt/" },
+  },
 ];
 
 /* ── STATE ── */
@@ -422,10 +490,6 @@ function isRegistered(sessionId, email) {
   return !!(regs[sessionId] && regs[sessionId].some(r => r.email.toLowerCase() === email.toLowerCase()));
 }
 
-function hasSessionRegistration(sessionId) {
-  const regs = loadRegistrations();
-  return !!(regs[sessionId] && regs[sessionId].length > 0);
-}
 
 function getUserRegistration(sessionId) {
   const regs = loadRegistrations();
@@ -439,97 +503,84 @@ function registerForSession(sessionId, name, email) {
   saveRegistrations(regs);
 
   if (GAS_ENDPOINT) {
-    const s = SESSIONS.find(x => x.id === sessionId);
+    const s = BREAKOUT_SESSIONS.find(x => x.id === sessionId);
     fetch(GAS_ENDPOINT, {
       method: "POST",
       body: JSON.stringify({
-        sessionId: s.id, sessionTitle: s.title, track: s.track,
-        day: s.day, time: s.time, room: s.room, name, email: email.toLowerCase()
+        sessionId: s.id, sessionTitle: s.title, category: s.category,
+        name, email: email.toLowerCase()
       })
-    }).catch(() => {}); // fire-and-forget; localStorage already saved
+    }).catch(() => {});
   }
 }
 
-/* ── RENDER SESSIONS ── */
-let activeFilter = "All";
+/* ── STATE ── */
 let pendingSessionId = null;
 
-function getRegisteredByEmail() {
-  const email = sessionStorage.getItem("lastEmail") || "";
-  if (!email) return new Set();
-  const regs = loadRegistrations();
-  const set = new Set();
-  Object.entries(regs).forEach(([id, arr]) => {
-    if (arr.some(r => r.email.toLowerCase() === email.toLowerCase())) set.add(Number(id));
-  });
-  return set;
-}
+/* ── RENDER BREAKOUTS ── */
+let activeBreakoutCat = "All";
 
-function renderSessions() {
-  const container = document.getElementById("sessionsList");
-  const filtered = activeFilter === "All" ? SESSIONS : SESSIONS.filter(s => s.track === activeFilter);
-  const days = [...new Set(filtered.map(s => s.day))];
+function renderBreakouts() {
+  const grid = document.getElementById("breakoutGrid");
+  const filtered = activeBreakoutCat === "All"
+    ? BREAKOUT_SESSIONS
+    : BREAKOUT_SESSIONS.filter(b => b.category === activeBreakoutCat);
 
-  const userRegs = getRegisteredByEmail();
-
-  let html = "";
-  days.forEach(day => {
-    html += `<div class="day-label">${day}</div><div class="sessions-grid">`;
-    filtered.filter(s => s.day === day).forEach(s => {
-      const regObj = getUserRegistration(s.id);
-      const userRegistered = regObj !== null && sessionStorage.getItem("lastEmail") &&
-        regObj.email.toLowerCase() === (sessionStorage.getItem("lastEmail") || "").toLowerCase();
-      const someoneRegistered = regObj !== null;
-
-      html += `
-        <div class="session-card ${userRegistered ? "registered" : ""}" id="card-${s.id}">
-          <div class="session-meta">
-            <span class="track-pill track-${s.track}">${s.track}</span>
-            <span class="session-time">${s.time} · ${s.room}</span>
+  grid.innerHTML = filtered.map(b => {
+    const regObj = getUserRegistration(b.id);
+    const userRegistered = regObj !== null && sessionStorage.getItem("lastEmail") &&
+      regObj.email.toLowerCase() === (sessionStorage.getItem("lastEmail") || "").toLowerCase();
+    const sp = b.speaker;
+    return `
+      <div class="breakout-card ${userRegistered ? 'registered' : ''}" id="card-${b.id}">
+        <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
+          <span class="cat-pill cat-${b.category}">${b.category}</span>
+        </div>
+        <h3>${b.title}</h3>
+        <div class="desc">${b.desc}</div>
+        <a class="breakout-speaker" href="${sp.linkedin}" target="_blank" rel="noopener noreferrer">
+          <div class="bs-avatar" style="background:${sp.color}">${sp.init}</div>
+          <div>
+            <div class="bs-name">${sp.name}</div>
+            <div class="bs-role">${sp.role}</div>
+            <div class="bs-role">${sp.org}</div>
+            <div class="bs-linkedin">View LinkedIn →</div>
           </div>
-          <h3>${s.title}</h3>
-          <div class="speaker">🎤 ${s.speaker}</div>
-          <div class="desc">${s.desc}</div>
-          <div class="session-capacity">Capacity: ${s.capacity} · Room ${s.room}</div>
-          ${userRegistered
-            ? `<button class="register-btn registered" disabled>✓ You're Registered</button>`
-            : `<button class="register-btn" onclick="openModal(${s.id})">Register for Session</button>`
-          }
-        </div>`;
-    });
-    html += `</div>`;
-  });
-
-  if (!filtered.length) html = `<p style="color:var(--muted);padding:2rem 0;">No sessions in this track.</p>`;
-  container.innerHTML = html;
+        </a>
+        ${userRegistered
+          ? `<button class="register-btn registered" disabled>You are Registered</button>`
+          : `<button class="register-btn" onclick="openModal(${b.id})">Register for Session</button>`}
+      </div>`;
+  }).join("") || `<p style="color:var(--muted);">No sessions in this category yet.</p>`;
 }
+
+document.getElementById("breakoutFilter").addEventListener("click", e => {
+  const btn = e.target.closest(".filter-btn");
+  if (!btn) return;
+  document.querySelectorAll("#breakoutFilter .filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  activeBreakoutCat = btn.dataset.cat;
+  renderBreakouts();
+});
 
 /* ── RENDER SPEAKERS ── */
 function renderSpeakers() {
   document.getElementById("speakersGrid").innerHTML = SPEAKERS.map(sp => `
-    <div class="speaker-card">
+    <a class="speaker-card" href="${sp.linkedin || '#'}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
       <div class="speaker-avatar" style="background:${sp.color}">${sp.init}</div>
       <h3>${sp.name}</h3>
-      <p>${sp.role}</p>
-    </div>
+      ${sp.role ? `<p>${sp.role}</p>` : ''}
+      ${sp.org  ? `<p>${sp.org}</p>`  : ''}
+      ${sp.linkedin ? `<p style="font-size:.75rem;color:var(--blue);margin-top:.4rem;">View LinkedIn →</p>` : ''}
+    </a>
   `).join("");
 }
-
-/* ── FILTERS ── */
-document.getElementById("filterBar").addEventListener("click", e => {
-  const btn = e.target.closest(".filter-btn");
-  if (!btn) return;
-  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  activeFilter = btn.dataset.track;
-  renderSessions();
-});
 
 /* ── MODAL ── */
 function openModal(sessionId) {
   pendingSessionId = sessionId;
-  const s = SESSIONS.find(x => x.id === sessionId);
-  document.getElementById("modalSessionName").textContent = `"${s.title}" · ${s.time}`;
+  const s = BREAKOUT_SESSIONS.find(x => x.id === sessionId);
+  document.getElementById("modalSessionName").textContent = `"${s.title}"`;
   document.getElementById("inputName").value = "";
   document.getElementById("inputEmail").value = sessionStorage.getItem("lastEmail") || "";
   document.getElementById("nameError").style.display = "none";
@@ -582,10 +633,10 @@ document.getElementById("registrationForm").addEventListener("submit", e => {
   registerForSession(pendingSessionId, name, email);
   sessionStorage.setItem("lastEmail", email.toLowerCase());
 
-  const s = SESSIONS.find(x => x.id === pendingSessionId);
+  const s = BREAKOUT_SESSIONS.find(x => x.id === pendingSessionId);
   closeModal();
-  renderSessions();
-  showToast(`Registered! Check your inbox — confirmation details for "${s.title}" will be sent to ${email}.`);
+  renderBreakouts();
+  showToast(`Registered! Confirmation for "${s.title}" will be sent to ${email}.`);
 });
 
 /* ── TOAST ── */
@@ -597,7 +648,7 @@ function showToast(msg) {
 }
 
 /* ── INIT ── */
-renderSessions();
+renderBreakouts();
 renderSpeakers();
 </script>
 </body>

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EduCon 2026 — Admin</title>
+  <title>AI with Purpose 2026 — Admin</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --blue: #1a56db; --blue-dk: #1140a6;
-      --green: #059669; --red: #dc2626; --gold: #d97706;
+      --blue: #2c5234; --blue-dk: #1e3a24;
+      --green: #059669; --red: #dc2626; --gold: #B9975B;
       --bg: #f1f5f9; --surface: #fff; --border: #e2e8f0;
       --text: #1e293b; --muted: #64748b; --radius: 10px;
     }
@@ -16,7 +16,7 @@
 
     /* ── LOGIN GATE ── */
     #loginGate {
-      position: fixed; inset: 0; background: linear-gradient(135deg, #1140a6, #0694a2);
+      position: fixed; inset: 0; background: linear-gradient(135deg, #1e3a24, #2c5234);
       display: flex; align-items: center; justify-content: center; z-index: 999;
     }
     #loginGate.hidden { display: none; }
@@ -118,7 +118,7 @@
       white-space: nowrap; flex-shrink: 0;
     }
     .reg-count.zero { background: #f1f5f9; color: var(--muted); }
-    .reg-count.some { background: #dbeafe; color: var(--blue); }
+    .reg-count.some { background: #d4e6d8; color: var(--blue); }
     .chevron { font-size: .85rem; color: var(--muted); flex-shrink: 0; transition: transform .2s; }
     .session-block.open .chevron { transform: rotate(180deg); }
 
@@ -151,7 +151,7 @@
   <div class="login-box">
     <div class="lock">🔒</div>
     <h1>Admin Access</h1>
-    <p>EduCon 2026 — Registration Dashboard</p>
+    <p>AI with Purpose 2026 — Registration Dashboard</p>
     <input type="password" id="pwInput" placeholder="Enter admin password" />
     <button onclick="attemptLogin()">Sign In</button>
     <div class="login-error" id="loginError">Incorrect password. Try again.</div>
@@ -160,7 +160,7 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <div class="brand">EduCon 2026 <span>Admin Dashboard</span></div>
+  <div class="brand">AI with Purpose 2026 <span>Admin Dashboard</span></div>
   <div class="topbar-actions">
     <button class="btn btn-success" onclick="exportCSV()">Export CSV</button>
     <button class="btn btn-outline" onclick="refreshData()">Refresh</button>
